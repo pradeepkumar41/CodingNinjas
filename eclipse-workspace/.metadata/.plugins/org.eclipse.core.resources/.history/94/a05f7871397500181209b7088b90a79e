@@ -1,0 +1,113 @@
+package BasicsOfImplementation;
+
+public class Solution {
+
+	
+	
+	 public static long maximumSumPath(int[] input1, int[] input2) {
+		 
+		 int p=0,q=0,index=0;
+		 int []array=null;
+		 long s1=0,s2=0,maxsum=0,remSum=0;
+		 while(true) {
+		
+			 if(p<input1.length && q<input2.length) {
+				 
+				 if(input1[p]>input2[q]) {
+				
+					 s2+=input2[q];
+					 q++;
+					 
+				 }
+				 else if(input1[p]<input2[q]) {
+					 s1+=input1[p];
+					 p++;
+					 
+				 }
+				 
+				 else {
+					 
+					 
+					 s1+=input1[p];p++;
+					 s2+=input2[q];q++;
+					 if(s1>s2)
+						 maxsum+=s1;
+					 else
+						 maxsum+=s2;
+					 
+					 s1=0;s2=0;
+					 
+					 
+				 }
+				 
+				 
+			 } //end of if()
+			 
+			 else {
+				    
+				 if(p==input1.length) {
+					 array=input2;
+					 index=q;
+				 }
+				 else if(q==input2.length)
+				 {
+					 array=input1;
+					 index=p;
+					 
+				 }
+				 
+				 else {
+					 	remSum=0;
+					 
+				 }
+				//calculating the final answer
+				 
+				 for(int i=index;i<array.length;i++) {
+					 
+				 }
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+			 }
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+		 }
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+	 }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+
+
+

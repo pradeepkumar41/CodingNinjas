@@ -1,0 +1,25 @@
+package BasicsOfImplementation;
+
+public class MinimumLengthWord {
+
+
+static void minimumLength(String input) {
+	
+	
+	int count=0; int min=Integer.MAX_VALUE;
+	for(int i=0;i<input.length();i++) {
+		if(input.charAt(i)==' ' || i==input.length()-1) {
+			if(i==input.length()-1)
+				count++;
+			if(min>count)
+				min=count;
+			count=0;
+		}
+		else
+		{
+			count++;
+		}		
+	}
+	
+}
+}

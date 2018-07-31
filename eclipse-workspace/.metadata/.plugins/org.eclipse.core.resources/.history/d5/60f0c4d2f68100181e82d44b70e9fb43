@@ -1,0 +1,46 @@
+
+public class ReturnSubsetSumK {
+
+int[][] subSetSumToK(int[] input, int index, int k){
+		
+		if(input.length==index){
+			if(k==0){
+				int[][] ans = new int[1][0];
+				return ans;
+			}else{
+				int[][] ans = new int[0][0];
+				return ans;
+			}
+		}
+		int[][] smallAnsNotIncluded = subSetSumToK(input,index+1, k);
+
+
+		int[][] smallAnsIncluded  = subSetSumToK(input,index+1, k -input[index]);
+
+		int[][] result = new int[smallAnsIncluded.length+smallAnsNotIncluded.length][];
+
+		int p=0;
+		for(int i=0;i<smallAnsNotIncluded.length;i++){
+
+			result[p++]=smallAnsNotIncluded[i];
+
+		}
+
+
+		for(int i=0;i<smallAnsIncluded.length;i++){
+
+			result[p++]=smallAnsIncluded[i];
+
+		}
+
+		
+		///filling task
+	}
+	
+	
+	
+	
+	
+	
+	
+}

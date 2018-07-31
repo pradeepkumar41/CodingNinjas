@@ -1,0 +1,135 @@
+package Trees;
+
+import java.util.Scanner;
+
+class BinaryTreeNode<T>{
+
+	T data;
+	BinaryTreeNode<T> left;
+	BinaryTreeNode<T> right;
+
+	public BinaryTreeNode(T data) {
+		this.data=data;
+	}
+
+}
+public class BinaryTree {
+	
+	//1.formatted tree
+	//2.Height of tree
+	//3.Search item
+	//4.Mirror
+
+	//1.height of the tree
+
+	static Scanner s=new Scanner(System.in);
+	
+	
+	
+	static BinaryTreeNode<Integer> constructTree()
+	{	
+		int data=s.nextInt();	
+		if(data==-1)
+			return null;
+		BinaryTreeNode<Integer> root=new BinaryTreeNode(data);
+		root.left=constructTree();
+		root.right=constructTree();
+		return root;
+		
+	}
+
+	public static void main(String[] args) {
+	
+		
+		//2 5 9 -1 -1 6 -1 -1 8 -1 -1
+		
+		
+		int data=s.nextInt();		
+	    BinaryTreeNode<Integer>root=constructTree();
+	//	System.out.println(height(root));
+	    
+	    System.out.println(SearchX(root, 8));
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	static int height(BinaryTreeNode<Integer> root)
+	{
+		if(root==null)
+		{	
+			return 0;
+
+		}
+		return Math.max(height(root.left), height(root.right))+1;
+	}
+
+	
+	static void formattedTree(BinaryTreeNode<Integer> root)
+	{	
+		if(root==null)
+		{
+			return;
+		}
+		String str="";
+		String rootp;
+		String left;
+		String right;
+		
+		if(root!=null)
+		{
+			rootp=""+root.data;
+	
+			if(root.left!=null)
+				left=""+root.left.data;
+			else
+				left=null;
+					
+			if(root.right!=null)
+				right=""+root.right.data;
+			else
+				right=null;
+					
+		str=rootp+left+right;
+			
+		System.out.println(str);
+		}
+		
+		formattedTree(root.left);
+		formattedTree(root.right);
+
+	
+	}
+
+	static boolean SearchX(BinaryTreeNode<Integer> root,int x)
+	{
+		if(root==null)
+			return false;
+		
+		if(root.data.equals(x))
+		{	return true;		
+		}	
+		
+		boolean flag=SearchX(root.left,x);
+		
+		if(flag==false)
+		 {
+			return SearchX(root.right,x);
+		 }
+		
+		return flag;
+	}
+
+
+	static void Mirror(BinaryTreeNode<Integer> root)
+	{
+		
+
+
+	}
+
+}

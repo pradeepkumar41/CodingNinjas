@@ -1,0 +1,89 @@
+package LinkListQuestion;
+
+import java.util.Scanner;
+
+class node {
+	public int data;
+	public node next;
+	public node(int data) {
+		this.data=data;
+		//	  	this.next = null;
+	}
+}
+public class KReverse {
+
+	static node reverseK(node head,int k)
+	{
+
+	node prev=null;
+	node curr=head;
+	while(curr!=null && k>0){
+		k--;
+		node next=curr.next;
+		curr.next=prev;
+		prev=curr;
+		curr=next;
+
+	}
+	if(curr!=null)
+	 head.next=reverseK(curr,k);	//attaching the head of with the output of the recursion
+	return prev;
+
+	}
+	
+	public static void main(String[] args) {
+		
+		node head=prepareLinkList();
+		 head=reverseK(head,4);
+		 printRecursively(head);
+		
+	}
+	
+	
+
+
+	static void printRecursively(node head) {
+		if(head==null) {
+			return;
+		}
+		else
+		{
+			System.out.print(head.data+" ");
+			printRecursively(head.next);			
+		}
+	}
+
+
+	static node prepareLinkList() {
+		Scanner s=new Scanner(System.in);
+		int data=s.nextInt();
+		node head=null;
+		node tail=null;
+		while(data!=-1) {
+			node newnode= new node(data);
+			if(head==null) {
+				head=newnode;
+				tail=newnode;
+			}
+			else
+			{
+				tail.next=newnode;			//tail is required to reduce the time compexity
+				tail=tail.next;				//without tail order of n square
+			}
+			data=s.nextInt();		
+		}	
+		s.close();
+		
+		return head;
+	}
+
+
+
+
+
+
+
+
+
+
+}

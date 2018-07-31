@@ -1,0 +1,164 @@
+package DataStructure;
+
+import java.util.Scanner;
+
+class mergeNode {
+	int data;
+	mergeNode next;
+
+	public mergeNode(int data) {
+		this.data = data;
+	}
+}
+
+public class MergeSort_MyCode {
+	
+static mergeNode getMidNode(mergeNode  head){
+	
+	mergeNode  slow=head,fast=head,prev=null;	
+	while(fast!=null) {
+	
+		if(fast.next==null || fast.next.next==null)
+			break;
+		fast=fast.next.next;
+		prev=slow;
+		slow=slow.next;	
+		
+	}
+	return slow;	//pointer to the mid node 
+}
+
+
+static mergeNode  mergeSort(mergeNode  head)
+{
+		
+	//break after mid
+	//create head2
+	//rec on head
+	//rec on head2
+	
+	if(head==null || head.next==null)
+	{
+		return null;
+	}
+	
+	
+	mergeNode  mid=getMidNode(head);
+	
+		mergeNode head2=mid.next;
+		mid.next=null;
+		head=mergeSort(head);	//left part
+		head2=mergeSort(head2);	//right part
+		
+		mergeNode  finalNode=mergeTwoList(head,head2);
+		return finalNode;
+
+}
+
+
+public static mergeNode mergeTwoList(mergeNode head1, mergeNode head2) {
+
+
+	mergeNode mergehead=null,current=null;	//variables for new LL	
+
+	mergeNode temp1,temp2;		
+	temp1=head1;
+	temp2=head2;
+
+	//step to initilse the final linked list
+	if(temp1.data>temp2.data) {
+
+		mergehead=temp2;
+		temp2=temp2.next;
+
+	}
+	else
+	{
+		mergehead=temp1;
+		temp1=temp1.next;
+
+	} 
+
+	current=mergehead;
+
+	while(temp1!=null && temp2!=null)
+	{	
+		if(temp1.data>temp2.data)
+		{
+			current.next=temp2;
+			temp2=temp2.next;	//increment the LL 2 pointer
+		}
+		else
+		{
+			current.next=temp1;
+			temp1=temp1.next;	//increment the LL 2 pointer	
+		}
+		current=current.next;	//increment the current pointer
+
+	}
+
+	if(temp1!=null)
+	{
+		current.next=temp1;
+
+	}
+	else
+	{
+		current.next=temp2;
+	}
+	return mergehead;
+}
+
+static mergeNode prepareLinkList() {
+
+	Scanner s=new Scanner(System.in);
+
+	int data=s.nextInt();
+	mergeNode head=null;
+	mergeNode tail=null;
+	while(data!=-1) {
+
+		mergeNode newnode=new mergeNode(data);
+
+		if(head==null) {
+			head=newnode;
+			tail=newnode;
+		}
+		else
+		{
+			tail.next=newnode;			//tail is required to reduce the time compexity
+			tail=tail.next;				//without tail order of n square
+		}
+
+		data=s.nextInt();		
+	}
+	s.close();
+	return head;
+}
+
+static void printRecursively(mergeNode head) {
+	if(head==null) {
+		return;
+	}
+	else
+	{
+		System.out.print(head.data+" ");
+		printRecursively(head.next);			
+	}
+}
+
+	public static void main(String[] args) {
+		
+		mergeNode inputList=prepareLinkList();
+		
+		//mergeNode result=mergeSort(inputList);
+		
+		System.out.println(getMidNode(inputList).data);
+		//printRecursively(result);
+		
+		
+	}
+	
+	
+	
+}

@@ -1,0 +1,36 @@
+package BasicsOfImplementation;
+
+public class PatternX {
+
+	
+	
+	
+	
+	
+
+
+
+
+static void numberX(int n) {
+	
+	int numberOfRows=2*n-1;	//formula 
+	
+	for(int i=1;i<=numberOfRows;i++) {
+		
+		for(int j=1;j<=numberOfRows;j++) {
+			
+			if((i==j) || (i+j)==numberOfRows+1)
+			{
+				System.out.print(i);
+			}
+			else
+				System.out.print(" ");
+		}
+		
+		
+		
+	}
+	
+	
+	
+}

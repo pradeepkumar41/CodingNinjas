@@ -1,0 +1,108 @@
+package Trees;	
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+
+class Node<T> {
+	T data;
+	Node<T> next;
+	Node(T data){
+		this.data = data;
+	}
+}
+
+class BinaryTreeNode<T> {
+	T data;
+	BinaryTreeNode<T> left;
+	BinaryTreeNode<T> right;
+
+	public BinaryTreeNode(T data) {
+		this.data = data;
+	}
+}
+
+public class LLLevelWise {
+
+		
+	  
+	  
+	 
+
+	
+
+
+	public static ArrayList<Node<BinaryTreeNode<Integer>>> LLForEachLevel(BinaryTreeNode<Integer> root) {
+
+		LinkedList<BinaryTreeNode<Integer>> queue=new LinkedList<>();
+
+		queue.addLast(root);
+		queue.addLast(null);
+
+		BinaryTreeNode<Integer> currentNode;
+		
+		ArrayList<Node<BinaryTreeNode<Integer>>> finalList;
+		
+
+
+		while(!queue.isEmpty())
+		{
+			
+			LinkedList<BinaryTreeNode<Integer>> head=new LinkedList<>();
+			
+			currentNode=queue.removeFirst();
+
+			if(currentNode!=null)
+			{
+
+				if(currentNode.left!=null)			//adding the childs if any of the current node
+				{ 
+					queue.addLast(currentNode.left);
+				}
+				if(currentNode.right!=null)
+				{
+					queue.addLast(currentNode.right);
+				}
+				
+				//work with the current node
+				
+				head.addLast(currentNode);	//linkedlist
+					
+			
+
+			}
+			
+			else
+			{
+				head.add(null);
+				//saving the linkedlist in the 
+				
+		
+				
+				
+				
+				
+				
+				
+				
+				if(!queue.isEmpty())
+		          {  queue.addLast(null);
+		             
+		          } 
+		          
+				
+				
+				
+			}
+			
+			
+			
+
+		}
+
+
+	}
+
+
+}
+

@@ -1,0 +1,125 @@
+package Trees;
+
+
+class BinaryTreeNode<T>{
+	
+	T data;
+	BinaryTreeNode<T> left;
+	BinaryTreeNode<T> right;
+	
+	public BinaryTreeNode(T data) {
+		this.data=data;
+	}
+	
+}
+
+public class BinaryTree {
+
+	
+	//1.formatted tree
+	//2.Height of tree
+	//3.Search item
+	//4.Mirror
+	
+	
+	//1.height of the tree
+	
+	
+	public static void main(String[] args) {
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	static int height(BinaryTreeNode<T> root)
+	{
+		if(root==null)
+		{	
+			return 0;
+		
+		}
+		
+		
+		int height=0;
+		int leftheight=height(root.left);
+		int rightheight=height(root.right);
+		
+		if(leftheight>rightheight)
+			height=leftheight+1;
+		else
+			height=rightheight+1;
+			
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+	static BinaryTreeNode<T> formattedTree(BinaryTreeNode<T> root)
+	{
+		
+		
+		
+		
+		
+	}
+	
+	static boolean SearchX(BinaryTreeNode<T> root,int x)
+	{
+	
+		
+		
+		
+		
+		
+	}
+	
+	
+	static void Mirror(BinaryTree<T> root)
+	{
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+			
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,40 @@
+public class Intersection{
+	
+static int  linearSearch(int [] input,int key){
+        
+      for(int i=0;i<input.length;i++){
+              
+        if(key==input[i])
+          return 1;
+      } 
+        return 0;
+    
+    }
+  
+  public static void intersection(int[] arr1, int[] arr2){
+		
+    int n1=arr1.length;
+    int n2=arr2.length;
+    int [] min;
+    int [] max;
+    
+    if(n1>n2)
+    
+    
+    
+		 int k=0;
+    	for(int i=0;i<arr2.length;i++ ){
+          
+          
+          k=linearSearch(arr1,arr2[i]);
+          if(k==1)
+            System.out.println(arr2[i]);
+          
+    
+  }
+  
+  
+  }
+  
+  
+}

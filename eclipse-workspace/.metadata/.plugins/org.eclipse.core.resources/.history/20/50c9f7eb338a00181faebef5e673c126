@@ -1,0 +1,314 @@
+package DataStructure;
+
+import java.util.Scanner;
+
+class node {
+	public int data;
+	public node next;
+	public node(int data) {
+		this.data=data;
+		//	  	this.next = null;
+	}
+}
+
+public class TestLlinkList {
+
+	static void print(node head,node tail) {
+		node temp=head;
+
+		while(temp!=tail.next) {
+			System.out.print(temp.data +"-->");
+			temp=temp.next;
+		}
+		//System.out.print("null");
+	}
+
+
+	static node prepareLinkList() {
+		Scanner s=new Scanner(System.in);
+		int data=s.nextInt();
+		node head=null;
+		node tail=null;
+		while(data!=-1) {
+			node newnode= new node(data);
+			if(head==null) {
+				head=newnode;
+				tail=newnode;
+			}
+			else
+			{
+				tail.next=newnode;			//tail is required to reduce the time compexity
+				tail=tail.next;				//without tail order of n square
+			}
+			data=s.nextInt();		
+		}	
+		return head;
+	}
+
+
+	static node getMidNode(node head)
+	{
+		node slow,fast;
+		slow=head;
+		fast=head;
+	
+		while(fast!=null)
+		{if(fast.next==null || fast.next.next==null)
+			break;
+		fast=fast.next.next;
+		//prev=slow;
+		slow=slow.next;		//slow is going one step at each iteration
+		}
+		return slow;	//pointer to the mid node
+	}
+	static void reverseIterativeHalf(node head)
+	{
+		node mid=getMidNode(head);
+		node prev,current,next;
+		prev=mid;
+		current=mid.next;
+		next=mid.next.next;
+
+		while(current!=null)
+		{ current.next=prev;
+		prev=current;
+		current=next;
+		if(next!=null)
+			next=next.next;
+		}
+
+		//link list is reversed now;
+	}	
+
+	static node getTail(node head)
+	{
+		node temp=head;
+		while(temp.next!=null)
+			temp=temp.next;
+		return temp;
+	}
+
+
+	static int length(node head) {
+		node  temp=head;
+		int length=0;
+		while(temp!=null) {
+			temp=temp.next;length++;
+		}
+		return length;
+	}
+
+
+
+
+	static boolean checkPalindrome(node head)
+	{
+		int length=length(head),loop;
+		node start=head;
+		node end=getTail(head);	//tail of the link list
+		reverseIterativeHalf(head);	//half portion is reversed
+
+		if(length%2!=0)		//if length is odd
+			loop=length/2;
+		else				// if length is even	
+			loop=length/2-1;
+		
+		
+long t1=System.currentTimeMillis();		
+		
+		while(loop>0) {
+			if(start.data!=end.data)
+				{return false;}
+			start=start.next;
+			end=end.next;
+			if(start.equals(end))	//happens in the case of odd length
+				{return true;}
+			loop--;
+		}	
+		
+		//System.out.println(checkPalindrome(head));
+long t2=System.currentTimeMillis();
+				
+System.out.println(t2-t1);
+					
+		
+		
+		if(loop==0)					//happens in the case of even lengthjj
+			if(start.data!=end.data)
+				return false;
+		return true;
+	}
+
+
+
+
+
+
+
+
+
+
+
+	static node reverseIterative(node head)
+	{
+		node prev,current,next,temp=head;
+		prev=null;
+		current=temp;
+		next=temp.next;
+
+		while(current!=null)
+		{	current.next=prev;
+		prev=current;
+		current=next;
+		if(next!=null)
+			next=next.next;
+		}
+		return prev;
+	}
+
+	//______________________SWAP_____________________________________________________________
+
+	static node InsertIth(node head,node node,int i){
+
+		if(i==0) {	
+			node.next=head;
+			head=node;
+			return head;
+		}
+		else {
+
+			node temp=head;
+			int loop;
+			loop=i-1;
+			while(loop!=0) {
+				temp=temp.next;
+				loop--;
+			}
+			node.next=temp.next;
+			temp.next=node;
+
+			return head;
+		}
+
+	}
+
+	//delete at ith position
+	static node[] deleteIth(node head,int i)
+	{
+		node [] updates=new node[2];	 //1th index contain the updated head and 0st index contain the deleted element
+		
+		if(i==0){				//if head is deleted
+			updates[0]=head;
+			head=head.next;
+			updates[1]=head;
+			return updates;
+		}
+		if(i>length(head))	
+		{				//if element is not present
+			updates[0]=null;
+			updates[1]=head;
+			return updates;
+		}
+			
+			
+			else {						//all remaining cases
+			node node,temp=head;
+			int loop;
+			loop=i-1; 
+			while(loop!=0)				//loop to reach the exact position
+			{
+				temp=temp.next;
+				loop--;
+			}			//saving the address of  first Node
+			updates[0]=temp.next;
+			System.out.println(temp.next.data);
+			//saving the deleted node
+			temp.next=temp.next.next;	//updating the pointer	
+			updates[1]=head;			//new head remain same
+			return updates;				//return updates
+		}	
+	}
+	
+	static void printRecursively(node head) {
+		if(head==null) {
+			return;
+		}
+		else
+		{
+			System.out.print(head.data+" ");
+			printRecursively(head.next);			
+		}
+	}
+
+
+	public static void main(String[] args) {
+
+		
+//		node mid=getMidNode(head);
+		
+		node head=prepareLinkList();
+		System.out.println(checkPalindrome(head));
+		//long t1=System.currentTimeMillis();
+		
+		//System.out.println(checkPalindrome(head));
+		//long t2=System.currentTimeMillis();
+		
+		//System.out.println(t2-t1);
+		
+		
+		//System.out.println(newnode[1].data);
+		
+		//printRecursively(newnode[1]);	//passing the new head
+		//InsertIth(head, newnode, 3);	
+
+
+
+
+
+
+
+		//
+
+
+
+		//System.out.print(getMidNode(head).data);
+
+
+		//		node newhead=reverseIterative(head);
+		//		node tail=getTail(newhead);
+		//		print(newhead, tail);
+		//		
+		//		node mid=getMidNode(head);
+		//		node tail=getTail(head);
+		//
+		//		print(head, tail);
+		//		System.out.println();
+		//		print(mid, tail);
+		//		reverseIterativeHalf(head);
+		//
+		//
+		//		System.out.println();
+		//		print(head, mid);
+
+		//1 2 3 4 5 6 7 -1
+
+
+
+
+
+
+
+
+
+
+
+
+
+	}
+
+
+
+
+
+
+}

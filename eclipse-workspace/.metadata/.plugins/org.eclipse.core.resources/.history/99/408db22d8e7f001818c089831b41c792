@@ -1,0 +1,31 @@
+//1. subset,subsequence, permutation
+
+
+public class PrintSubSet {
+static void printSubSet(int[] input,int [] resultSoFar,int index) {
+	
+	
+	if(index==input.length) {
+		for(int i=0;i<resultSoFar.length;i++) {
+			System.out.println();		
+		}
+	}
+	
+	printSubSet(input,resultSoFar,index+1);
+	
+	int [] newresultSoFar=new int[resultSoFar.length+1];
+	
+	for(int i=0;i<resultSoFar.length;i++ )
+	{
+		newResultSoFar[i]=resultSoFar[i];	
+	}
+	newResultSoFar[resultSoFar.length]=input[index];
+	
+	printSubSet(input,newResultSoFar,index+1);
+	
+	
+}
+	
+}
+
+

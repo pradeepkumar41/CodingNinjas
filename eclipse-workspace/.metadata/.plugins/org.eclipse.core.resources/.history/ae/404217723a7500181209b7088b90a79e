@@ -1,0 +1,48 @@
+package BasicsOfImplementation;
+
+import java.util.Scanner;
+
+public class Solution {
+
+	
+	public static void main(String[] args) {
+		
+		Scanner s=new Scanner(System.in);
+		int s1=0,s2=0;
+		s1=s.nextInt();
+		
+		
+		int [] input1=new int[s1];
+		
+		for(int i=0;i<input1.length;i++) {
+			input1[i]=s.nextInt();
+		}
+		
+		s2=s.nextInt();
+		int [] input2=new int[s2];
+		
+		for(int i=0;i<input2.length;i++) {
+			input2[i]=s.nextInt();
+		}
+		
+		
+		long maxsum=maximumSumPath(input1, input2);
+		System.out.println(maxsum);
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	 	
+	
+	
+}
+
+
+

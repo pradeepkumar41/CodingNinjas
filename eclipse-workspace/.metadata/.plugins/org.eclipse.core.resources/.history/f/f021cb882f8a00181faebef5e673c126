@@ -1,0 +1,91 @@
+package DataStructure;
+
+class Node{
+	int data;
+	Node next;
+	public Node(int data){
+		this.data=data;
+	}
+}
+public class BubbleSort {
+
+
+	static Node bubbleSort(Node head) {
+
+		Node curr1,curr2,prev1,temp ,next;
+		int n=length(head);
+		for(int i=0;i<n-1;i++) {
+
+			prev1=null;
+			curr1=head;
+			curr2=head.next;
+			next=curr2.next;
+			
+			for(int j=0;j<n-i;j++) {
+				if(curr1.data>curr2.data) {
+					//swap is required
+					if(curr1.equals(head) || curr2.equals(head)) {
+						//one of the position contain the head
+						curr2.next=head;
+						curr1.next=next;
+						head=curr2;
+						
+					//Incrementing the pointers		
+						prev1=curr2;
+						curr2=next;
+						if(curr2==null)
+							break;
+						else
+						next=next.next;
+					
+					}				
+					else {
+						curr2.next=curr1;
+						curr1.next=next;
+						prev1.next=curr2;
+						
+						//Incrementing the pointers
+						prev1=curr2;
+						curr2=next;
+						if(curr2==null)
+							break;
+						else
+						next=next.next;
+									
+					}
+
+				}
+				else {
+					prev1=curr1;
+					curr1=curr2;
+					curr2=next;
+					if(curr2==null)
+						break;
+					else
+					next=next.next;
+									
+				}
+
+			}
+
+
+
+		}
+
+
+
+
+
+
+
+
+
+		return head;
+	}
+
+
+
+
+
+
+}

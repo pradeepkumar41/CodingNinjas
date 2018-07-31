@@ -1,0 +1,109 @@
+package LinkListQuestion;
+
+import DataStructure.node;
+
+//import DataStructure.node;
+
+
+class node {
+	public int data;
+	public node next;
+	public node(int data) {
+		this.data=data;
+		//	  	this.next = null;
+	}
+}
+
+public class RearrangeTheLinkList {
+
+
+	static node getTail(node head)
+	{
+		node temp=head;
+		while(temp.next!=null)
+			temp=temp.next;
+		return temp;
+	}
+
+	static node reverseIterativeHalf(node head)
+	{
+		node mid=getMidNode(head);
+		node prev,current,next;
+		prev=mid;
+		current=mid.next;
+		next=mid.next.next;
+
+		while(current!=null)
+		{ current.next=prev;
+		prev=current;
+		current=next;
+		if(next!=null)
+			next=next.next;
+		}
+		
+		return  head;
+
+		//link list is reversed now;
+	}
+	
+
+	static node getMidNode(node head)
+	{
+		node slow,fast;
+		slow=head;
+		fast=head;
+	
+		while(fast!=null)
+		{if(fast.next==null || fast.next.next==null)
+			break;
+		fast=fast.next.next;
+		//prev=slow;
+		slow=slow.next;		//slow is going one step at each iteration
+		}
+		return slow;	//pointer to the mid node
+	}
+	
+	
+	public static node changelist(node head) {
+		
+		
+		//reverse half the link list
+		node tail=getTail(head);
+		node mid=getMidNode(head);
+		reverseIterativeHalf(head);
+		
+		node newlist=null;
+		
+		while()
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,68 @@
+
+public class KeyPad {
+
+	static String mapping(int n)
+	{
+		String str[]= {"","","ABC","DEF","GHI","JKL","MNO","PQRS","TUV","WXYZ"};
+		
+		return str[n];
+	}
+	
+	static String[] keypad(int num)
+	{
+		if(num==0) {
+			
+			String[] arr= {""};
+			return arr;
+			
+		}
+		
+		String [] smallAns=keypad(num/10);
+		
+		String words=mapping(num%10);
+		
+		String [] result=new String[words.length()*smallAns.length];
+		
+		int k=0;
+		for(int i=0;i<words.length();i++) {
+			for(int j=0;j<smallAns.length;j++) {
+				result[k++]=smallAns.charAt[j]+words.charAt(i);
+			}
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public static void main(String[] args) {
+		
+		
+		
+		
+		
+		
+		
+
+	}
+
+}

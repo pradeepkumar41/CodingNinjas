@@ -1,0 +1,26 @@
+
+public class ReturnSubsetSumK {
+
+	int [][] returnSubset(int [] arr,int index,int k){
+		
+		
+		
+	
+		int [][]smallAns1=returnSubset(arr, index+1, k);
+		int [][]smallAns2=returnSubset(arr, index+1, k-arr[index]);
+		
+		int [][] output=new arr[smallAns1.length+smallAns2.length];
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+}

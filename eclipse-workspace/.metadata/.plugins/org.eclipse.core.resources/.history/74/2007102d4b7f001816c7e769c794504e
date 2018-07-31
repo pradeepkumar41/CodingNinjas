@@ -1,0 +1,37 @@
+
+public class QuickSortAlgorithm {
+
+	static void quickSort(int [] input,int p,int r)
+	{
+		if(p<r)
+		{
+			int q=partition(input,p,r);
+			quickSort(input,p,q-1);
+			quickSort(input,q+1,r);	
+		}	
+	}
+	static void swap(int [] arr,int index1,int index2) {	
+		int temp;
+		temp=arr[index1];
+		arr[index1]=arr[index2];
+		arr[index2]=temp;
+	}
+	
+	static int partition(int [] input,int p,int r) {
+		
+		int i=p-1;
+		int j=p;
+		int pivot=input[r];	//pivot : last element
+		
+		for(int k=j;k<=r-1;k++) {
+			if(input[j]<=pivot) {
+				i++;	//increment i
+				swap(input,i,j);	//swapping
+			}	
+		}
+		swap(input,i+1,r);		//r is the position of pivot	i+1 is the right position for pivot element	
+		return i+1;	//index where the pivot element is placed
+		
+	}
+	
+}
