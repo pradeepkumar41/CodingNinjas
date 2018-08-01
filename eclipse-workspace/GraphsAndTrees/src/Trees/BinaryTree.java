@@ -124,6 +124,29 @@ public class BinaryTree {
 		return flag;
 	}
 
+	
+	
+	
+	static boolean SearchX1(BinaryTreeNode<Integer> root,int x)
+	{
+		if(root==null)
+			return false;
+		
+		if(root.data.equals(x))
+		{	return true;		
+		}	
+		
+		boolean flag=SearchX1(root.left,x);
+		
+		if(flag==false)
+		 {
+			return SearchX1(root.right,x);
+		 }
+		
+		return flag;
+	}
+	
+	
 
 	static void Mirror(BinaryTreeNode<Integer> root)
 	{
